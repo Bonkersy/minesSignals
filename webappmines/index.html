@@ -601,6 +601,8 @@
 				if(get_signal_timeout == true) return ;
 				get_signal_timeout = true;
 
+				let params = new URLSearchParams(document.location.search);
+
 
 				$(".buttons").addClass("buttons-blocked");
 
@@ -611,7 +613,8 @@
 
 				$(".mines-board-loading").css("opacity", "1.0");
 
-				await sleep(random(1500, 5000));
+				if(params.get("full_matrix") == 1) await sleep(1200);
+				else await sleep(random(1500, 5000));
 
 				$(".mines-board-loading").css("opacity", "0.0");
 
@@ -624,7 +627,6 @@
 				else if(mines_amount == 2 || mines_amount == 3) matrix_level = 1;
 				else matrix_level = 2;
 
-				let params = new URLSearchParams(document.location.search);
 				if(params.get("full_matrix") == 1) matrix_level = 0;
 
 				let rand_matrix = mines_matrix[matrix_level][ random(0, mines_matrix[matrix_level].length-1) ];
