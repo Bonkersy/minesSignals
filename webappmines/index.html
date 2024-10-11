@@ -521,7 +521,16 @@
 				else matrix_level = 1;
 
 				let params = new URLSearchParams(document.location.search);
-				if(params.get("full_matrix") == 1) matrix_level = random(3, 5);
+				if(params.get("full_matrix") == 1) 
+				{
+					matrix_level = random(3, 5);
+
+					if(mines_amount == 1)
+					{
+						matrix_level = 24;
+					}
+				}
+
 
 				let rand_matrix = [];
 
@@ -542,7 +551,14 @@
 				{
 					$("#mine"+i).addClass("mines-open-anim");  await sleep(400); $("#mine"+i).addClass("mine-selected");
 
-					await sleep(500);
+					if(matrix_level > 10)
+					{
+						await sleep(20);
+					}
+					else
+					{
+						await sleep(500);
+					}
 				}
 
 
