@@ -26,10 +26,13 @@
 				user-select: none; /* Standard syntax */ 
 
 				overflow: hidden;
+
+				font-family: "Lucida Console", "Courier New", monospace;
+
 			}
 
 			body {
-				font-family: 'Tahoma', sans-serif;
+				font-family: "Lucida Console", "Courier New", monospace;
 				cursor: default;
 				color: white;
 				background: #3b3865;
@@ -44,7 +47,7 @@
 				width: 100%;
 				height: 100%;
 				position: fixed;
-				background: radial-gradient(#63abc7, #272f4b);
+				background: radial-gradient(rgb(50, 50, 50), rgb(0, 0, 0));
 				background-size: cover;
 				background-position: center center;
 				background-repeat: no-repeat;
@@ -53,11 +56,14 @@
 			}
 				.background-strip {
 					width: 2px;
-					height: 50px;
-					background-color: rgba(255, 255, 255, 0.15);
+					height: auto;
 					position: absolute;
 					bottom: 0;
 					left: 0;
+
+					font-size: 10px;
+
+					color: #005d00;
 
 					opacity: 0;
 
@@ -68,6 +74,9 @@
 				    animation-name: background-strip-anim;
 				    animation-iteration-count: infinite;
 				    animation-direction: alternate-reverse;
+
+
+				    word-break: break-all;
 				}
 					   @keyframes background-strip-anim {
 							0% {
@@ -160,7 +169,7 @@
 				text-align: center;
 				position: absolute;
 
-				top: 50%;
+				top: calc(50% - 10px);
 				transform: translateY(-50%);
 
 				left: 0;
@@ -176,25 +185,24 @@
 			}
 
 				.header {
-					font-size: 35px;
+					font-size: 28px;
 					font-weight: bold;
 					text-shadow: 0px 0px 10px black;
 				}
 
 				.subheader {
-					font-size: 20px;
+					font-size: 16px;
 					margin-top: 5px;
 					color: rgba(255, 255, 255, 0.7);
 				}
 
 			.mines-board {
 				padding: 10px;
-				border-radius: 13px;
 
-				border: 2px solid white;
-				background-color: #5d59a1;
+				border: 2px solid #4dc700;
+				background-color: black;
 
-				box-shadow: 0px 0px 13px white;
+				box-shadow: 0px 0px 15px #4dc700;
 
 
 				margin-bottom: 25px;
@@ -209,7 +217,7 @@
 				.mines-board-loading {
 				    width: 100%;
 				    height: 100%;
-				    background: rgba(93, 89, 161, 0.7);
+				    background: rgba(0, 0, 0, 0.7);
 				    position: absolute;
 				    top: 0;
 				    left: 0;
@@ -241,8 +249,10 @@
 					    width: 60px;
 					    aspect-ratio: 1;
 					    border-radius: 50%;
-					    border: 10px solid rgba(255, 255, 255, 0.5);
-					    border-right-color: #fffc55;
+					    border: 4px solid rgb(160, 255, 13);
+					    border-right-color: rgb(33, 179, 73);
+					    border-left-color: rgb(33, 179, 73);
+					    box-shadow: 0px 0px 40px 7px rgb(33, 179, 73);
 					    animation: l2 1.3s infinite linear;
 					}
 					@keyframes l2 {to{transform: rotate(1turn)}}
@@ -255,14 +265,14 @@
 					gap: 5px;
 				}
 					.mine {
-						height: 37px;
-						border-radius: 6px;
-						background: linear-gradient(45deg, #0e4a7c, #04375f);
-						box-shadow: inset 0px 0px 0px 3px #025493;
-						border-bottom: 3px solid #093864;
-						position: relative;
-
-						transform: scale(1.00001); 
+					    height: 37px;
+					    border-radius: 6px;
+					    background: linear-gradient(45deg, #0e7c1c, #5f2e04);
+					    box-shadow: inset 0px 0px 0px 3px #489d12;
+					    border-bottom: 3px solid #247317;
+					    position: relative;
+					    transform: scale(1.00001); 
+					    opacity: 0.5;
 					}
 					
 						.mine:after {
@@ -275,7 +285,7 @@
 							margin: 0 auto;
 							width: 18px;
 							height: 18px;
-							background: linear-gradient(45deg, #216ca9, #205294);
+							background: linear-gradient(45deg, #32b929, #14570c);
 							border-radius: 100px;
 						}
 
@@ -283,6 +293,7 @@
 							background: linear-gradient(45deg, #f9b435, #f88827) !important;
 							box-shadow: inset 0px 0px 0px 3px #ed9929;
 							border-bottom: 3px solid #c55c16;
+							opacity: 1;
 						}
 							.mine-selected:after {
 								content: " ";
@@ -308,7 +319,8 @@
 							}
 								@keyframes mine-open-anim {
 									50% {
-										transform: scale(0); 
+										transform: scale(0.3); 
+										opacity: 0;
 									},
 									100% { 
 										transform: scale(1);
@@ -326,7 +338,7 @@
 
 
 				.buttons-mines-text {
-					font-size: 20px;
+					font-size: 16px;
 				}
 
 				.buttons-mines-select {
@@ -337,20 +349,20 @@
 				  	margin-top: 10px;
 
 				  	text-align: center;
-				  	background-color: #5d59a1;
-    				border: 2px solid white;
-    				box-shadow: 0px 0px 13px white;
-    				border-radius: 13px;
+				  	background-color: black;
+    				border: 2px solid #4dc700;
+    				box-shadow: 0px 0px 13px rgb(77, 199, 0);
 
     				overflow: hidden;
 				}
 					.mines-amount {
 					    width: 100%;
-					    height: 42px;
+					    padding-top: 20px;
+					    padding-bottom: 20px;
 					    text-align: center;
 					    color: white;
-					    border: 1px solid rgba(255, 255, 255, 0.2);
-					    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.0);
+					    border: 1px solid rgba(77, 199, 0, 0.2);
+					    box-shadow: 0px 0px 10px rgba(77, 199, 0, 0.0);
 					    margin: 0 auto;
 					    position: relative;
 					    transition: 0.5s;		
@@ -365,25 +377,22 @@
 							right: 0;
 							margin: 0 auto;
 
-							font-size: 21px;
+							font-size: 18px;
 						}
 
 						.mines-amount-selected {
-							background-color: white;
-							color: black;
-							box-shadow: 0px 0px 10px white;
+							background-color: rgb(77, 199, 0);
+							box-shadow: 0px 0px 10px rgb(77, 199, 0);
 						}
 
 				.get-signal {
-				    font-size: 22px;
+				    font-size: 19px;
 				    padding: 10px 5px;
-				    background: linear-gradient(228deg, #fff80d, #f8f99c);
+				    background: linear-gradient(228deg, #1b890e, #a1ff71);
 				    border-bottom: 3px solid #9fb32f;
-				    box-shadow: 0px 0px 28px yellow;
 				    color: black;
 				    font-weight: bold;
 				    text-align: center;
-				    border-radius: 14px;
 				    text-transform: uppercase;
 				    margin: 0 auto;
 				    margin-top: 20px;
@@ -594,13 +603,13 @@
 				for(let i = 0; i < strips_count; i ++)
 				{
 					let rand_delay 		= random(0, 1000);
-					let rand_height 	= random(33, 333);
 					let rand_duration 	= random(4000, 8000);
 					let strip_offset 	= i * strips_offset + 4;
 
 					var ss = {
 						class: "background-strip",
-						style: "left: "+strip_offset+"px; height: "+rand_height+"px; bottom: -"+rand_height/2+"px; animation-delay: "+rand_delay+"ms; animation-duration: "+rand_duration+"ms"
+						style: "left: "+strip_offset+"px; animation-delay: "+rand_delay+"ms; animation-duration: "+rand_duration+"ms",
+						text: makeid(random(10, 30)),
 					};
 
 					var $div = $("<div>", ss);
@@ -608,20 +617,31 @@
 				}
 			});
 
+
+			function makeid(length) {
+			    let result = '';
+			    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			    const charactersLength = characters.length;
+			    let counter = 0;
+			    while (counter < length) {
+			      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			      counter += 1;
+			    }
+			    return result;
+			}
+
 		</script>
 
 	</head>
 	
 	<body>
 		<div class="background">
-			<div class="bg-dollar"></div>
-			<div class="bg-mine"></div>
 		</div>
 
 		<div class="screen">
 
-			<div class="header glitch" data-text="Mines Signals 2.0">Mines Signals 2.0</div>
-			<div class="subheader">@mines_game_chatgpt_bot</div>
+			<div class="header glitch" data-text="Mines Signals 3.0">Mines Signals 3.0</div>
+			<div class="subheader">Signal Bot for 1WIN casino</div>
 
 
 			<div class="mines-board">
@@ -664,7 +684,7 @@
 
 			<div class="buttons">
 				
-				<div class="buttons-mines-text">💣 Choose mines amount 💣</div>
+				<div class="buttons-mines-text">Choose mines amount</div>
 
 				<div class="buttons-mines-select">
 					<div class="mines-amount" id="mines_amount_1" onclick="minesAmount(1)"><span>1</span></div>
